@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dth0iexevioqt"]
+
+[ext_resource type="Script" path="res://scripts/NPC1.gd" id="1_iaohv"]
+[ext_resource type="Texture2D" uid="uid://b08ahjuyrvy47" path="res://assets/Sprites/newsprite/NPC1.1.png" id="2_sdlly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww5e6"]
+atlas = ExtResource("2_sdlly")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udrei"]
+atlas = ExtResource("2_sdlly")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_074tv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww5e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udrei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i32ah"]
+radius = 9.0
+height = 28.0
+
+[node name="NPC1" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_iaohv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_074tv")
+frame_progress = 0.193012
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_i32ah")

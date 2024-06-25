@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://wogl6w8djdyy"]
+
+[ext_resource type="Script" path="res://scripts/optionsmenu.gd" id="1_8bmfp"]
+[ext_resource type="FontFile" uid="uid://clymjjjmydu4m" path="res://assets/Others/PixelOperator8-Bold.ttf" id="1_h1j82"]
+[ext_resource type="PackedScene" uid="uid://dl1odyxwcehd8" path="res://scenes/vol_slider.tscn" id="2_y7sn5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8bmfp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 636.0
+offset_right = 220.0
+offset_bottom = 700.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h1j82")
+text = "Volume"
+
+[node name="VolSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_y7sn5")]
+layout_mode = 2
+value = 0.5
+bus_name = "Master"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h1j82")
+text = "Apply"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
